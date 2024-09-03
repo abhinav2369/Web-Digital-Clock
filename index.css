@@ -1,0 +1,171 @@
+body{
+    margin:0px;
+    padding:0px;
+    /* Dimensioning of Body */
+
+    height:100vh;
+    width: 100vw;
+
+    /* Aligning to the center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    background-image: url(Resources/background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-family:Arial, Helvetica, sans-serif;
+    color: red;
+    overflow: none;
+}
+
+/* ------ Title Block ------*/
+.title{
+    height: 50px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px;
+    padding-right: 30px;
+}
+.title img{
+    height: 40px;
+    width: 40px;
+    padding: 20px;
+}
+.title h2{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+
+#main-container-block{
+    /* Dimensioning of Main Container */
+    height:450px;
+    width: 300px;
+
+    /* Positoning relative to it's initial position */
+    position: relative;
+}
+
+#circular-block{
+    /* Dimensioning of Main Container */
+    height: 300px;
+    width: 300px;
+
+    background-color: rgb(255, 255, 255);
+
+    /* Border Properties */
+    border: 2px solid  rgb(255, 0, 0);
+    border-radius: 300px;
+    box-shadow: 0px 0px 40px 2px #fe8888;
+
+    /* Positoning with respect to the parent container */
+    position:absolute;
+    /* Top Layering */
+    z-index:2;
+
+    /* Aligning to the center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circular-block::before{
+    /* position: absolute; */
+    content:"";
+    height:8px;
+    width:8px;
+    background-color: black;
+    border:1px solid black;
+    border-radius: 50%;
+}
+.hand{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    right:6px;
+    top:1px;
+}
+.hand i{
+    position:absolute;
+    background-color: var(--clr);
+    width:4px;
+    height:70px;
+    border-radius: 8px;
+    height: var(--h);
+}
+
+#rectangle-block{
+    background-color: antiquewhite;
+    border: 4px solid red;
+    border-radius: 12px;
+    background-color: rgb(173, 255, 165);
+}
+
+#digital-screen{
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    padding-bottom: 10px;
+}
+.sub-block{
+    width: 80%;
+    background-color: white;
+    padding: 15px 15px;
+    border-radius: 12px;
+}
+#digital-screen  b{
+    display: inline-block;
+    padding: 3px 5px;
+    font-size: 32px;
+}
+#digital-screen b:nth-child(1)::after,
+#digital-screen b:nth-child(2)::after{
+    content:" :";
+}
+
+span{
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset : 12px;
+    text-align: center;
+}
+
+b{
+    transform: rotate(calc(-30deg * var(--i)));
+    display:inline-block;
+    font-size:20px;
+}
+
+#rectangle-block{
+
+    /* Dimensioning of Main Container */
+    height:300px;
+    width:300px;
+
+    /* Border Properties */
+    border: solid black 2px;
+    border-top: none;
+
+    /* Positoning with respect to the parent container */
+    position: absolute;
+    top:150px;
+}
+
+@media screen and (max-width:700px) {
+    body{
+        overflow: none;
+    }
+}
