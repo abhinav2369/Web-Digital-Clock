@@ -1,171 +1,177 @@
-body{
-    margin:0px;
-    padding:0px;
-    /* Dimensioning of Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    height:100vh;
-    width: 100vw;
-
-    /* Aligning to the center */
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    overflow: hidden;
-    background-image: url(Resources/background.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    font-family:Arial, Helvetica, sans-serif;
-    color: red;
-    overflow: none;
+    background: linear-gradient(45deg, #1a1a1a, #2c3e50);
 }
 
-/* ------ Title Block ------*/
-.title{
-    height: 50px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    border-radius: 12px;
-    padding: 10px;
-    padding-right: 30px;
-}
-.title img{
-    height: 40px;
-    width: 40px;
-    padding: 20px;
-}
-.title h2{
-    margin: 0px;
-    padding: 0px;
-    font-size: 20px;
 }
 
+.clock-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
 
-#main-container-block{
-    /* Dimensioning of Main Container */
-    height:450px;
+.clock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Analog Clock Styles */
+.analog-clock {
     width: 300px;
-
-    /* Positoning relative to it's initial position */
-    position: relative;
-}
-
-#circular-block{
-    /* Dimensioning of Main Container */
     height: 300px;
-    width: 300px;
+    position: relative;
+}
 
-    background-color: rgb(255, 255, 255);
-
-    /* Border Properties */
-    border: 2px solid  rgb(255, 0, 0);
-    border-radius: 300px;
-    box-shadow: 0px 0px 40px 2px #fe8888;
-
-    /* Positoning with respect to the parent container */
-    position:absolute;
-    /* Top Layering */
-    z-index:2;
-
-    /* Aligning to the center */
+.outer-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#circular-block::before{
-    /* position: absolute; */
-    content:"";
-    height:8px;
-    width:8px;
-    background-color: black;
-    border:1px solid black;
+.inner-circle {
+    width: 90%;
+    height: 90%;
     border-radius: 50%;
-}
-.hand{
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    right:6px;
-    top:1px;
-}
-.hand i{
-    position:absolute;
-    background-color: var(--clr);
-    width:4px;
-    height:70px;
-    border-radius: 8px;
-    height: var(--h);
 }
 
-#rectangle-block{
-    background-color: antiquewhite;
-    border: 4px solid red;
-    border-radius: 12px;
-    background-color: rgb(173, 255, 165);
-}
-
-#digital-screen{
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+.hand {
     position: absolute;
-    padding-bottom: 10px;
-}
-.sub-block{
-    width: 80%;
-    background-color: white;
-    padding: 15px 15px;
-    border-radius: 12px;
-}
-#digital-screen  b{
-    display: inline-block;
-    padding: 3px 5px;
-    font-size: 32px;
-}
-#digital-screen b:nth-child(1)::after,
-#digital-screen b:nth-child(2)::after{
-    content:" :";
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 5px;
 }
 
-span{
+.hour-hand {
+    width: 4px;
+    height: 25%;
+    background: #ff6b6b;
+    transform: translateX(-50%);
+}
+
+.minute-hand {
+    width: 3px;
+    height: 35%;
+    background: #4ecdc4;
+    transform: translateX(-50%);
+}
+
+.second-hand {
+    width: 2px;
+    height: 40%;
+    background: #f7d794;
+    transform: translateX(-50%);
+}
+
+.center-circle {
     position: absolute;
-    transform: rotate(calc(30deg * var(--i)));
-    inset : 12px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.number {
+    position: absolute;
+    color: #fff;
+    font-size: 1.2rem;
+    transform-origin: center;
+    width: 30px;
+    height: 30px;
     text-align: center;
+    line-height: 30px;
 }
 
-b{
-    transform: rotate(calc(-30deg * var(--i)));
-    display:inline-block;
-    font-size:20px;
+/* Position the numbers */
+.number-1 { top: 10%; right: 26%; }
+.number-2 { top: 25%; right: 10%; }
+.number-3 { top: 46%; right: 5%; }
+.number-4 { bottom: 25%; right: 10%; }
+.number-5 { bottom: 10%; right: 26%; }
+.number-6 { bottom: 5%; right: 46%; }
+.number-7 { bottom: 10%; left: 26%; }
+.number-8 { bottom: 25%; left: 10%; }
+.number-9 { top: 46%; left: 5%; }
+.number-10 { top: 25%; left: 10%; }
+.number-11 { top: 10%; left: 26%; }
+.number-12 { top: 5%; left: 46%; }
+
+/* Digital Clock Styles */
+.digital-clock {
+    text-align: center;
+    color: #fff;
 }
 
-#rectangle-block{
-
-    /* Dimensioning of Main Container */
-    height:300px;
-    width:300px;
-
-    /* Border Properties */
-    border: solid black 2px;
-    border-top: none;
-
-    /* Positoning with respect to the parent container */
-    position: absolute;
-    top:150px;
+.time {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 
-@media screen and (max-width:700px) {
-    body{
-        overflow: none;
+.colon {
+    animation: blink 1s infinite;
+}
+
+.date {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#ampm {
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .clock-container {
+        padding: 1rem;
+    }
+
+    .analog-clock {
+        width: 250px;
+        height: 250px;
+    }
+
+    .time {
+        font-size: 2rem;
+    }
+
+    .date {
+        font-size: 0.9rem;
     }
 }
